@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
-# _*_ coding: utf-8 _*_
+# -*- coding: utf-8 -*-
 '''
-@date: 2017-12-09
-@author: Daye Yee
-@copyright: 2017 Daye Yee <tosony@163.com>
+@date: 2016-09-02
+@author: DayeLee
+@copyright: 2016, Shell.Xu <shell909090@gmail.com>
 @license: BSD-3-clause
 '''
 
-op_set = {
+OP_SET = {
     '(': None,
     ')': None,
-    '+': lambda x, y: x+y,
-    '-': lambda x, y: x-y,
-    '*': lambda x, y: x*y,
-    '/': lambda x, y: x/y,
+    '+': lambda x, y: x + y,
+    '-': lambda x, y: x - y,
+    '*': lambda x, y: x * y,
+    '/': lambda x, y: x / y,
 }
 
-op_priority = {
+OP_PRIORITY = {
     '+': 10,
     '-': 10,
     '*': 20,
@@ -27,7 +27,7 @@ op_priority = {
 def parser_exp(exp):
     s = ''
     for c in exp:
-        if c in op_set:
+        if c in OP_SET:
             if s:
                 yield s
             s = ''
@@ -38,9 +38,9 @@ def parser_exp(exp):
         yield s
 
 
-def find_last_op(l):
-    for e in reversed(l):
-        if e in op_set:
+def find_last_op(list_):
+    for e in reversed(list_):
+        if e in OP_SET:
             return e
 
 
@@ -48,7 +48,7 @@ def force_stack(stack):
     r = stack.pop(-1)
     op = stack.pop(-1)
     l = stack.pop(-1)
-    result = op_set[op](l, r)
+    result = OP_SET[op](l, r)
     print('{} {} {} => {}'.format(op, l, r, result))
     stack.append(result)
 
@@ -61,12 +61,12 @@ def eval_exp(exp):
         elif e == '(':
             stack.append(eval_exp(exp))
             continue
-        if e not in op_set:
+        if e not in OP_SET:
             stack.append(float(e))
             continue
         while True:
             last = find_last_op(stack)
-            if last is None or op_priority[last] < op_priority[e]:
+            if last is None or OP_PRIORITY[last] < OP_PRIORITY[e]:
                 break
             force_stack(stack)
         stack.append(e)
@@ -76,7 +76,6 @@ def eval_exp(exp):
 
 
 def calc(exp):
-    '''calculation function'''
     s = parser_exp(exp)
     result = eval_exp(s)
     assert not list(s)
@@ -85,4 +84,4 @@ def calc(exp):
 
 print(calc('2*3+1'))
 print(calc('1+2*3'))
-print(calc('(1.1+2.5/10)*3/4+1'))
+print(calc('(1.1+2.5/10)*3/4+1'))  # expression can not contain whitespace
