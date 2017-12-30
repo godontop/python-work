@@ -1,0 +1,6 @@
+file = open("trip_way.py", "r")
+print(file.read())
+print("Re-reading")
+print(file.read())
+print("Finished")
+file.close()
