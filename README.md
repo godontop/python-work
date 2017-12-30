@@ -1,2 +1,2 @@
 # python-work
-python working repo
+[Python notes](https://github.com/godontop/python-work/blob/master/python-notes.ipynb)
