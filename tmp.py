@@ -1,82 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-op_set = {
-    '(': None,
-    ')': None,
-    '+': lambda x, y: x + y,
-    '-': lambda x, y: x - y,
-    '*': lambda x, y: x * y,
-    '/': lambda x, y: x / y,
-}
-
-op_priority = {
-    '+': 10,
-    '-': 10,
-    '*': 20,
-    '/': 20,
-}
+import random
 
 
-def parser_exp(exp):
-    s = ''
-    for c in exp:
-        if c in op_set:
-            if s:
-                yield s
-            s = ''
-            yield c
-        else:
-            s += c
-    if s:
-        yield s
+secret = random.randint(1, 99)
+guess = 0
+tries = 0
+print(type(secret))
+print(type(guess))
+print("AHOY! I'm the Dread Pireate Roberts, and I have a secret!")
+print("It is a number from 1 to 99, I'll give you 6 tries.")
+while guess != secret and tries < 6:
+    guess = int(input("What's yer guess? "))  # In Python 2, don't need int()
+    if guess < secret:
+        print("Too low, ye scurvy dog!")
+    elif guess > secret:
+        print("Too high, landlubber!")
 
+    tries = tries + 1
 
-def find_last_op(l):
-    for e in reversed(l):
-        if e in op_set:
-            return e
-
-
-def force_stack(stack):
-    r = stack.pop(-1)
-    op = stack.pop(-1)
-    l = stack.pop(-1)
-    result = op_set[op](l, r)
-    print('{} {} {} => {}'.format(op, l, r, result))
-    stack.append(result)
-
-
-def eval_exp(exp):
-    stack = []
-    for e in exp:
-        if e == ')':
-            break
-        elif e == '(':
-            stack.append(eval_exp(exp))
-            continue
-        if e not in op_set:
-            stack.append(float(e))
-            continue
-        while True:
-            last = find_last_op(stack)
-            if last is None or op_priority[last] < op_priority[e]:
-                break
-            force_stack(stack)
-        stack.append(e)
-    while len(stack) > 1:
-        force_stack(stack)
-    return stack[0]
-
-
-def calc(exp):
-    s = parser_exp(exp)
-    return eval_exp(s)
-
-
-print(calc('2*3+1'))
-print(calc('1+2*3'))
-print(calc('(1.1+2.5/10)*3/4+1'))
-print(eval('(1.1+2.5/10)*3/4+1'))
-aa = parser_exp('(1.1 + 2.5 / 10) *3/4+1')
-print(list(aa))
+if guess == secret:
+    print("Avant! Ye got is! Found my secret, ye did!")
+else:
+    print("No more guesses! Better luck next time, matey!")
+    print("The secret number was", secret)
