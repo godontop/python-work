@@ -21,13 +21,12 @@ for i in range(0, 100):
     line_width = random.randint(1, 3)
     pygame.draw.rect(screen, color, [left, top, width, height], line_width)
 
+pygame.display.flip()
 
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    pygame.display.flip()
-    pygame.time.delay(30)
 
 pygame.quit()
