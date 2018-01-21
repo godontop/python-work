@@ -23,6 +23,10 @@ Unicode Technical Reports
 UNICODE HAN DATABASE (UNIHAN)  
 [http://www.unicode.org/reports/tr38/](http://www.unicode.org/reports/tr38/)
 
+最新版的代码图表(超过100M)  
+[http://www.unicode.org/Public/UCD/latest/charts/](http://www.unicode.org/Public/UCD/latest/charts/)  
+[http://www.unicode.org/Public/UCD/latest/charts/CodeCharts.pdf](http://www.unicode.org/Public/UCD/latest/charts/CodeCharts.pdf)
+
 Unihan Database Lookup  
 [http://www.unicode.org/charts/unihan.html](http://www.unicode.org/charts/unihan.html)
 
