@@ -1,5 +1,21 @@
-* [git](#git)
-* [Unicode](#unicode)
+# 网站导航
+IT网址导航
+
+* [Python](#python)
+	* [Beautiful Soup](#beautiful-soup)
+		* [git](#git)
+		* [Unicode](#unicode)
+
+## Python
+### Beautiful Soup
+Beautiful Soup官网  
+[https://www.crummy.com/software/BeautifulSoup/](https://www.crummy.com/software/BeautifulSoup/)
+
+Beautiful Soup官方文档  
+[https://www.crummy.com/software/BeautifulSoup/bs4/doc/](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+
+Beautiful Soup官方文档中文版  
+[https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/](https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/)
 
 #### git
 [https://git-scm.com/](https://git-scm.com/)
