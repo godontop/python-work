@@ -3,6 +3,7 @@ IT网址导航
 
 * [Python](#python)
 	* [Beautiful Soup](#beautiful-soup)
+	* [IPython](#ipython)
 		* [git](#git)
 		* [Unicode](#unicode)
 
@@ -16,6 +17,10 @@ Beautiful Soup官方文档
 
 Beautiful Soup官方文档中文版  
 [https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/](https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/)
+
+### IPython
+IPython 官方文档  
+[http://ipython.readthedocs.io/en/stable/](http://ipython.readthedocs.io/en/stable/)
 
 #### git
 [https://git-scm.com/](https://git-scm.com/)
