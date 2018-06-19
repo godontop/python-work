@@ -1,9 +1,31 @@
-test1 = 1
-test2 = []
+import datetime
+import time
+import urllib.parse
 
-if test1:
-    if test2:
-        print(test1, "is true")
-        print(test2, "is true")
-else:
-    print(test1, "is false")
+
+class Throttle:
+    """Add a delay between downloads to the same domain
+    """
+
+    def __init__(self, delay):
+        # amount of delay between downloads for each domain
+        self.delay = delay
+        # timestamp of when a domain was last accessed
+        self.domains = {}
+
+    def wait(self, url):
+        domain = urllib.parse.urlparse(url).netloc
+        last_accessed = self.domains.get(domain)
+        if self.delay > 0 and last_accessed is not None:
+            sleep_secs = self.delay - \
+                (datetime.datetime.now() - last_accessed).seconds
+            if sleep_secs > 0:
+                # domain has been accessed recently
+                # so need to sleep
+                time.sleep(sleep_secs)
+        # update the last accessed time
+        self.domains[domain] = datetime.datetime.now()
+
+
+throttle = Throttle(1)
+print(throttle.domains)
